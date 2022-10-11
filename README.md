@@ -3,13 +3,13 @@ Compilador Microsoft C++ 32bits e 64 bits
 
 | MSC version | _MSC_VER                                      | Observação |
 |-------------|-----------------------------------------------|------------|
-| 1.0         | 100 (Microsoft C)                             | 16 bits    |
-| 2.0         | 200 (Microsoft C)                             | 16 bits    |
-| 3.0         | 300 (Microsoft C)                             | 16 bits    |
-| 4.0         | 400 (Microsoft C)                             | 16 bits    |
-| 5.0         | 500 (Microsoft C)                             | 16 bits    |
-| 6.0         | 600 (Microsoft C)                             | 16 bits    |
-| 7.0         | 700 (Microsoft C)                             | 16 bits    |
+| 1.0         | 100 (Microsoft C )                             | 16 bits    |
+| 2.0         | 200 (Microsoft C )                             | 16 bits    |
+| 3.0         | 300 (Microsoft C )                             | 16 bits    |
+| 4.0         | 400 (Microsoft C )                             | 16 bits    |
+| 5.0         | 500 (Microsoft C )                             | 16 bits    |
+| 6.0         | 600 (Microsoft C )                             | 16 bits    |
+| 7.0         | 700 (Microsoft C )                             | 16 bits    |
 | 1.0         | 800 (Visual C++ )                             | 32 bits    |
 | 2.0         | 900 (Visual C++ )                             | 32 bits    |
 | 4.0         | 1000 (Visual Studio 4.0)                      | 32 bits    |
