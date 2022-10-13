@@ -46,3 +46,110 @@ Compilador Microsoft C++ 32bits e 64 bits
 | 14.32       | 1932 (Visual Studio 2022 17.2)                | 64 bits    |
 | 14.33       | 1933 (Visual Studio 2022 17.3)                | 64 bits    |
 | 14.34       | 1934 (Visual Studio 2022 17.4)                | 64 bits    |
+
+```cmd
+;wget https://github.com/Kitware/CMake/releases/download/v3.23.0-rc3/cmake-3.23.0-rc3-windows-x86_64.msi
+;wget https://github.com/ninja-build/ninja/releases/download/v1.10.2/ninja-win.zip
+;wget https://github.com/wixtoolset/wix3/releases/download/wix3112rtm/wix311.exe
+;wget https://github.com/wixtoolset/wix3/releases/download/wix3112rtm/wix311-binaries.zip
+
+set SystemRoot=C:\WINDOWS
+set CMAKE_HOME=%ProgramFiles%\CMake
+set WIX=%ProgramFiles(x86)%\WiX Toolset v3.11\
+
+set CommandPromptType=Native
+set Platform=x64
+set VisualStudioVersion=17.0
+set VSCMD_ARG_app_plat=Desktop
+set VSCMD_ARG_HOST_ARCH=x64
+set VSCMD_ARG_TGT_ARCH=x64
+set CommandPromptType="Native"
+set Platform="x64"
+set VisualStudioVersion="17.0"
+set VSCMD_ARG_app_plat="Desktop"
+set VSCMD_ARG_HOST_ARCH="x64"
+set VSCMD_ARG_TGT_ARCH="x64"
+set VSCMD_VER="17.1.0"
+set __DOTNET_ADD_64BIT="1"
+set __DOTNET_PREFERRED_BITNESS="64"
+
+set FrameworkVersion=v4.0.30319
+set FrameworkVersion64=v4.0.30319
+set WindowsSDKLibVersion=10.0.19041.0
+set WindowsSDKVersion=10.0.19041.0
+set UCRTVersion=10.0.19041.0
+set VCToolsVersion=14.31.31103
+
+set Framework40Version=v4.0
+set FrameworkDir=%SystemRoot%\Microsoft.NET\Framework64
+set FrameworkDir64=%SystemRoot%\Microsoft.NET\Framework64
+
+
+set VSINSTALLDIR=%ProgramFiles(x86)%\Microsoft Visual Studio\2022\BuildTools
+set DevEnvDir=%VSINSTALLDIR%\Common7\IDE
+set VCIDEInstallDir=%DevEnvDir%\VC
+set VS170COMNTOOLS=%VSINSTALLDIR%\Common7\Tools
+
+set VCINSTALLDIR=%ProgramFiles(x86)%\Microsoft Visual Studio\2022\BuildTools\VC
+set VCToolsInstallDir=%VCINSTALLDIR%\Tools\MSVC\%VCToolsVersion%
+set VCToolsRedistDir=%VCINSTALLDIR%\Redist\MSVC\%VCToolsVersion%
+
+set WindowsSdkDir=%ProgramFiles(x86)%\Windows Kits\10
+set UniversalCRTSdkDir=%WindowsSdkDir%
+set WindowsSdkBinPath=%WindowsSdkDir%\bin
+set WindowsSdkVerBinPath=%WindowsSdkDir%\bin\%WindowsSDKVersion%
+set WindowsLibPath=%WindowsSdkDir%\UnionMetadata\%WindowsSDKVersion%;%WindowsSdkDir%\References\%WindowsSDKVersion%
+
+set ExtensionSdkDir=%ProgramFiles(x86)%\Microsoft SDKs\Windows Kits\10\ExtensionSDKs
+
+
+set INCLUDE=%VCToolsInstallDir%\include;%WindowsSdkDir%\include\%UCRTVersion%\ucrt;%WindowsSdkDir%\include\%UCRTVersion%\shared;%WindowsSdkDir%\include\%UCRTVersion%\um;%WindowsSdkDir%\include\%UCRTVersion%\winrt;%WindowsSdkDir%\include\%UCRTVersion%\cppwinrt
+set LIB=%VCToolsInstallDir%\lib\x64;%WindowsSdkDir%\lib\%UCRTVersion%\ucrt\x64;%WindowsSdkDir%\lib\%UCRTVersion%\um\x64
+set LIBPATH=%VCToolsInstallDir%\lib\x64;%VCToolsInstallDir%\lib\x86\store\references;%WindowsSdkDir%\UnionMetadata\%UCRTVersion%;%WindowsSdkDir%\References\%UCRTVersion%;%FrameworkDir64%\%FrameworkVersion64%
+
+set __VSCMD_PREINIT_PATH=C:\Users\COMPUTADOR1\AppData\Local\activestate\cache\bin;C:\Users\COMPUTADOR1\AppData\Local\ActiveState\StateTool\release;C:\ActiveTcl\bin;C:\GnuWin32\bin;C:\Program Files\ImageMagick-7.1.0-Q16-HDRI;C:\Program Files\Common Files\Oracle\Java\javapath;%ProgramFiles(x86)%\Common Files\Intel\Shared Libraries\redist\intel64\compiler;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SystemRoot%\System32\WindowsPowerShell\v1.0\;%SystemRoot%\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\PuTTY\;C:\Program Files\MIT\Kerberos\bin;C:\Users\COMPUTADOR1\AppData\Local\activestate\cache\bin;C:\Users\COMPUTADOR1\AppData\Local\ActiveState\StateTool\release;C:\Users\COMPUTADOR1\AppData\Local\Microsoft\WindowsApps
+
+
+set Path=%SystemRoot%\system32\
+set Path=%Path%;%SystemRoot%\
+set Path=%Path%;%SystemRoot%\System32\Wbem\
+set Path=%Path%;%SystemRoot%\System32\WindowsPowerShell\v1.0\
+set Path=%Path%;%SystemRoot%\System32\OpenSSH\
+
+set Path=%Path%;%CMAKE_HOME%\bin\
+
+set Path=%Path%;%VCINSTALLDIR%\Tools\MSVC\%VCToolsVersion%\bin\HostX64\x64\
+
+set Path=%Path%;%VSINSTALLDIR%\Common7\IDE\
+set Path=%Path%;%VSINSTALLDIR%\Common7\IDE\CommonExtensions\Microsoft\TestWindow\
+set Path=%Path%;%VSINSTALLDIR%\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer\
+;set Path=%Path%;%VSINSTALLDIR%\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\
+;set Path=%Path%;%VSINSTALLDIR%\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja\
+set Path=%Path%;%VSINSTALLDIR%\Common7\IDE\VC\VCPackages\
+set Path=%Path%;%VSINSTALLDIR%\Common7\IDE\VC\Linux\bin\ConnectionManagerExe\
+set Path=%Path%;%VSINSTALLDIR%\Common7\Tools\
+set Path=%Path%;%VSINSTALLDIR%\MSBuild\Current\bin\Roslyn\
+set Path=%Path%;%VSINSTALLDIR%\MSBuild\Current\Bin\amd64\
+
+set Path=%Path%;%WindowsSdkDir%\bin\%WindowsSDKVersion%\x64\
+set Path=%Path%;%WindowsSdkDir%\bin\x64\
+
+set Path=%Path%;%FrameworkDir64%\%FrameworkVersion64%
+set Path=%Path%;C:\Program Files\Common Files\Oracle\Java\javapath\
+set Path=%Path%;C:\ActiveTcl\bin\
+set Path=%Path%;C:\GnuWin32\bin\
+
+set Path=%Path%;C:\Users\COMPUTADOR1\AppData\Local\activestate\cache\bin\
+set Path=%Path%;C:\Users\COMPUTADOR1\AppData\Local\ActiveState\StateTool\release\
+set Path=%Path%;C:\Users\COMPUTADOR1\AppData\Local\Microsoft\WindowsApps\
+
+set Path=%Path%;%ProgramFiles%\ImageMagick-7.1.0-Q16-HDRI\
+
+set Path=%Path%;%ProgramFiles(x86)%\Common Files\Intel\Shared Libraries\redist\intel64\compiler\
+
+
+set Path=%Path%;%ProgramFiles%\Git\cmd\
+set Path=%Path%;%ProgramFiles%\Docker\Docker\resources\bin\
+set Path=%Path%;%ProgramFiles%\PuTTY\
+set Path=%Path%;%ProgramFiles%\MIT\Kerberos\bin\
+```
