@@ -47,15 +47,46 @@ Compilador Microsoft C++ 32bits e 64 bits
 | 14.33       | 1933 (Visual Studio 2022 17.3)                | 64 bits    |
 | 14.34       | 1934 (Visual Studio 2022 17.4)                | 64 bits    |
 
+
+setando compiladores e ferramentas de desenvolvimento na raça sem depender de IDE
+
 ```cmd
+;; ====================================================================================================
+;;  INSTALAÇÃO DO CMAKE ULTIMA VERSÃO
+;; ====================================================================================================
 ;wget https://github.com/Kitware/CMake/releases/download/v3.23.0-rc3/cmake-3.23.0-rc3-windows-x86_64.msi
+;wget https://github.com/Kitware/CMake/releases/download/v3.25.0-rc1/cmake-3.25.0-rc1-windows-x86_64.zip
+
+;; ====================================================================================================
+;;  INSTALAÇÃO DO NINJA ULTIMA VERSÃO
+;; ====================================================================================================
 ;wget https://github.com/ninja-build/ninja/releases/download/v1.10.2/ninja-win.zip
+
+;; ====================================================================================================
+;;  INSTALAÇÃO DO WIX ULTIMA VERSÃO
+;; ====================================================================================================
+
 ;wget https://github.com/wixtoolset/wix3/releases/download/wix3112rtm/wix311.exe
 ;wget https://github.com/wixtoolset/wix3/releases/download/wix3112rtm/wix311-binaries.zip
 
+;; ====================================================================================================
+;;  definição de variáveis do perl
+;; ====================================================================================================
+set PERL_BASE=F:\perl\straussberry\5.32.1.1\perl
+set PERL5LIB=%PERL_BASE%\lib\perl5
+set PERL_MM_OPT="INSTALL_BASE=%PERL_BASE%"
+set PERL_MB_OPT="--install_base %PERL_BASE%"
+
+;; ====================================================================================================
+;;  definição de variáveis base do windows
+;; ====================================================================================================
 set SystemRoot=C:\WINDOWS
-set CMAKE_HOME=%ProgramFiles%\CMake
-set WIX=%ProgramFiles(x86)%\WiX Toolset v3.11\
+set __VSCMD_PREINIT_PATH=%PATH%
+;;=============================================================== 
+;; Versionamento para as ferramentas de linha de comando 
+;; do visual c++
+;;=============================================================== 
+
 
 set CommandPromptType=Native
 set Platform=x64
@@ -80,35 +111,71 @@ set WindowsSDKVersion=10.0.19041.0
 set UCRTVersion=10.0.19041.0
 set VCToolsVersion=14.31.31103
 
+;;=============================================================== 
+;; Locais de instalação dos softwares auxiliares dos compiladores
+;;=============================================================== 
+
+; local de instalação do CMAKE
+;set CMAKE_HOME=%ProgramFiles%\CMake
+set CMAKE_HOME=F:\cpp\cmake-3.25.0-rc1-windows-x86_64
+
+; local de instalação do NINJA
+set NINJA_HOME=F:\cpp\ninja\1.10.2\
+
+; local de instalação do WIX
+set WIX=%ProgramFiles(x86)%\WiX Toolset v3.11\
+
+; .NET Framework
+set FrameworkDir=F:\cpp\Microsoft.NET\Framework64
+
+; Instalação do Visual Studio
+set VSINSTALLDIR=F:\cpp\Microsoft Visual Studio\2022\BuildTools
+
+; Instalação do Visual C++
+set VCINSTALLDIR=%VSINSTALLDIR%\VC
+
+; Instalação do Windows SDK
+set WindowsSdkDir=F:\cpp\Windows Kits\10
+
+; Instalação das extensões do SDK do windows 10
+set ExtensionSdkDir=%WindowsSdkDir%\ExtensionSDKs
+
+;;=============================================================== 
+
+;312 MB
 set Framework40Version=v4.0
-set FrameworkDir=%SystemRoot%\Microsoft.NET\Framework64
 set FrameworkDir64=%SystemRoot%\Microsoft.NET\Framework64
 
-
-set VSINSTALLDIR=%ProgramFiles(x86)%\Microsoft Visual Studio\2022\BuildTools
+; 3GB
 set DevEnvDir=%VSINSTALLDIR%\Common7\IDE
 set VCIDEInstallDir=%DevEnvDir%\VC
 set VS170COMNTOOLS=%VSINSTALLDIR%\Common7\Tools
 
-set VCINSTALLDIR=%ProgramFiles(x86)%\Microsoft Visual Studio\2022\BuildTools\VC
 set VCToolsInstallDir=%VCINSTALLDIR%\Tools\MSVC\%VCToolsVersion%
 set VCToolsRedistDir=%VCINSTALLDIR%\Redist\MSVC\%VCToolsVersion%
 
-set WindowsSdkDir=%ProgramFiles(x86)%\Windows Kits\10
+; 2.51 GB
+
 set UniversalCRTSdkDir=%WindowsSdkDir%
 set WindowsSdkBinPath=%WindowsSdkDir%\bin
 set WindowsSdkVerBinPath=%WindowsSdkDir%\bin\%WindowsSDKVersion%
 set WindowsLibPath=%WindowsSdkDir%\UnionMetadata\%WindowsSDKVersion%;%WindowsSdkDir%\References\%WindowsSDKVersion%
 
-set ExtensionSdkDir=%ProgramFiles(x86)%\Microsoft SDKs\Windows Kits\10\ExtensionSDKs
-
-
+;========================================================================
+; locais dos arquivos cabeçalho 
+;========================================================================
 set INCLUDE=%VCToolsInstallDir%\include;%WindowsSdkDir%\include\%UCRTVersion%\ucrt;%WindowsSdkDir%\include\%UCRTVersion%\shared;%WindowsSdkDir%\include\%UCRTVersion%\um;%WindowsSdkDir%\include\%UCRTVersion%\winrt;%WindowsSdkDir%\include\%UCRTVersion%\cppwinrt
+
+;========================================================================
+; locais das bibliotecas estáticas 
+;========================================================================
 set LIB=%VCToolsInstallDir%\lib\x64;%WindowsSdkDir%\lib\%UCRTVersion%\ucrt\x64;%WindowsSdkDir%\lib\%UCRTVersion%\um\x64
 set LIBPATH=%VCToolsInstallDir%\lib\x64;%VCToolsInstallDir%\lib\x86\store\references;%WindowsSdkDir%\UnionMetadata\%UCRTVersion%;%WindowsSdkDir%\References\%UCRTVersion%;%FrameworkDir64%\%FrameworkVersion64%
 
-set __VSCMD_PREINIT_PATH=C:\Users\COMPUTADOR1\AppData\Local\activestate\cache\bin;C:\Users\COMPUTADOR1\AppData\Local\ActiveState\StateTool\release;C:\ActiveTcl\bin;C:\GnuWin32\bin;C:\Program Files\ImageMagick-7.1.0-Q16-HDRI;C:\Program Files\Common Files\Oracle\Java\javapath;%ProgramFiles(x86)%\Common Files\Intel\Shared Libraries\redist\intel64\compiler;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SystemRoot%\System32\WindowsPowerShell\v1.0\;%SystemRoot%\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\PuTTY\;C:\Program Files\MIT\Kerberos\bin;C:\Users\COMPUTADOR1\AppData\Local\activestate\cache\bin;C:\Users\COMPUTADOR1\AppData\Local\ActiveState\StateTool\release;C:\Users\COMPUTADOR1\AppData\Local\Microsoft\WindowsApps
 
+;;=======================================================================
+;; ADIOCIONANDO FERRAMENTAS CPP ao PATH
+;;=======================================================================
 
 set Path=%SystemRoot%\system32\
 set Path=%Path%;%SystemRoot%\
@@ -133,23 +200,37 @@ set Path=%Path%;%VSINSTALLDIR%\MSBuild\Current\Bin\amd64\
 
 set Path=%Path%;%WindowsSdkDir%\bin\%WindowsSDKVersion%\x64\
 set Path=%Path%;%WindowsSdkDir%\bin\x64\
-
 set Path=%Path%;%FrameworkDir64%\%FrameworkVersion64%
+
+;;=======================================================================
+;; ADIOCIONANDO FERRAMENTAS JAVA ao PATH
+;;=======================================================================
 set Path=%Path%;C:\Program Files\Common Files\Oracle\Java\javapath\
+
+;;=======================================================================
+;; ADIOCIONANDO FERRAMENTAS PERL ao PATH
+;;=======================================================================
+set Path=%Path%;%PERL_BASE%\bin
+set Path=%Path%;%PERL_BASE%\..\c\bin
+set Path=%Path%;%PERL_BASE%\site\bin
+set TERM=dumb
+
+;;=======================================================================
+;; ADIOCIONANDO FERRAMENTAS TCL ao PATH
+;;=======================================================================
 set Path=%Path%;C:\ActiveTcl\bin\
+
+;;=======================================================================
+;; ADIOCIONANDO FERRAMENTAS GNU linha de comando ao PATH
+;;=======================================================================
+set Path=%Path%;%ProgramFiles%\Git\cmd\
 set Path=%Path%;C:\GnuWin32\bin\
-
-set Path=%Path%;C:\Users\COMPUTADOR1\AppData\Local\activestate\cache\bin\
-set Path=%Path%;C:\Users\COMPUTADOR1\AppData\Local\ActiveState\StateTool\release\
-set Path=%Path%;C:\Users\COMPUTADOR1\AppData\Local\Microsoft\WindowsApps\
-
+set Path=%Path%;%ProgramFiles%\PuTTY\
 set Path=%Path%;%ProgramFiles%\ImageMagick-7.1.0-Q16-HDRI\
 
 set Path=%Path%;%ProgramFiles(x86)%\Common Files\Intel\Shared Libraries\redist\intel64\compiler\
-
-
-set Path=%Path%;%ProgramFiles%\Git\cmd\
 set Path=%Path%;%ProgramFiles%\Docker\Docker\resources\bin\
-set Path=%Path%;%ProgramFiles%\PuTTY\
+
 set Path=%Path%;%ProgramFiles%\MIT\Kerberos\bin\
+
 ```
